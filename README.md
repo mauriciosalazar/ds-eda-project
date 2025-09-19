@@ -1,98 +1,88 @@
-[![Shipping files](https://github.com/neuefische/ds-eda-project-template/actions/workflows/workflow-03.yml/badge.svg?branch=main&event=workflow_dispatch)](https://github.com/neuefische/ds-eda-project-template/actions/workflows/workflow-03.yml)
-# ds-project-template
+# King County Real Estate Investment Analysis - EDA Project
 
-Template for creating ds simple projects
+## Project Overview
 
-## Requirements
+This repository contains a comprehensive Exploratory Data Analysis (EDA) of King County house sales data to develop data-driven investment strategies for real estate investor Zachary Brooks. The analysis investigates three key investment hypotheses using fundamental EDA techniques to identify profitable opportunities in the historical house renovation market.
 
-- pyenv
-- python==3.11.3
+## Business Context
 
-## Setup
+**Client**: Zachary Brooks, Real Estate Investor  
+**Objective**: Develop evidence-based investment strategies for renovating and selling historical properties  
+**Market**: King County, Washington (May 2014 - May 2015)  
+**Dataset Size**: 21,597 property transactions
 
-One of the first steps when starting any data science project is to create a virtual environment. For this project you have to create this environment from scratch yourself. However, you should be already familiar with the commands you will need to do so. The general workflow consists of... 
+## Research Questions
 
-* setting the python version locally to 3.11.3
-* creating a virtual environment using the `venv` module
-* activating your newly created environment 
-* upgrading `pip` (This step is not absolutely necessary, but will save you trouble when installing some packages.)
-* installing the required packages via `pip`
+This project investigates three core hypotheses:
 
-At the end, you want to make sure that people who are interested in your project can create an identical environment on their own computer in order to be able to run your code without running into errors. Therefore you can create a `requirements file` and add it to your repository. You can create such a file by running the following command: 
+1. **Renovation Impact**: Do renovated old homes (≥50 years) sell at significantly higher prices than comparable non-renovated homes?
+2. **Seasonal Timing**: Do homes sold in peak months (May-July) achieve higher average prices than off-peak months (November-January)?
+3. **Location Strategy**: How do old homes in high-density areas compare to new properties in terms of pricing patterns?
 
-```bash
-pip freeze > requirements.txt
+## Presentation
+
+Navigate to `presentation/` and open `index.html` in a web browser for a short presentation of key findings.
+
+## Key Findings
+
+### 🏗️ Renovation Strategy (Hypothesis 1)
+- **Result**: ✅ **VALIDATED** - Strong renovation premium identified
+- **Impact**: Renovated old homes sell for **$260,066 more** (52.4% premium)
+- **Market Opportunity**: 6,793 unrenovated old properties available
+- **Correlation**: 0.26 between renovation status and price
+
+### 📅 Seasonal Strategy (Hypothesis 2)
+- **Result**: ✅ **VALIDATED** - Measurable seasonal advantage
+- **Impact**: Peak season commands **$26,850 premium** (5.1% higher)
+- **Volume**: 76% higher sales activity during peak months
+- **Pattern**: Consistent seasonal pricing trends across all property types
+
+### 🏙️ Location Strategy (Hypothesis 3)
+- **Result**: ❌ **HYPOTHESIS REJECTED** - Contrary to expectations
+- **Key Insight**: Old houses in dense areas cost **$192,175 MORE** (32.5% premium)
+- **Implication**: Dense areas represent premium markets, not value opportunities
+- **Strategic Pivot**: Target high-density areas for luxury renovations
+
+## Data Description
+
+### Dataset Information
+- **Source**: King County house sales database
+- **Time Period**: May 2014 - May 2015
+- **Records**: 21,597 transactions
+- **Features**: 21 variables including price, location, property characteristics
+
+
 ```
 
-*Note: In rare case such a requirements file created with `pip freeze` might not ensure that another (especially M1 chip) user can install and execute it properly. This can happen if libraries need to be compiled (e.g. SciPy). Then it also depends on environment variables and the actual system libraries.*
+## Installation and Setup
 
-### Unit testing (Optional)
+### Requirements
+- Python 3.8+
+- Jupyter Notebook
+- Required packages listed in `requirements.txt`
 
-If you write python scripts for your data processing methods, you can also write unit tests. In order to run the tests execute in terminal:
-
+### Installation Steps
 ```bash
-pytest
+# Clone the repository
+git clone https://github.com/mauriciosalazar/ds-eda-project.git
+cd ds-eda-project
+
+# Create virtual environment
+python -m venv eda-env
+source eda-env/bin/activate  # On Windows: eda-env\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Launch Jupyter Notebook
+jupyter notebook
 ```
 
-This command will execute all the functions in your project that start with the word **test**.
-
-## Set up your Environment
-This repo contains a requirements.txt file with a list of all the packages and dependencies you will need.
-
-Before you can start with plotly in Jupyter Lab you have to install node.js (if you haven't done it before).
-- Check **Node version**  by run the following commands:
-    ```sh
-    node -v
-    ```
-    If you haven't installed it yet, begin at `step_1`. Otherwise, proceed to `step_2`.
-
-
-### **`macOS`** type the following commands : 
-
-
-- `Step_1:` Update Homebrew and install Node by following commands:
-    ```sh
-    brew update
-    brew install node
-    ```
-
-- `Step_2:` Install the virtual environment and the required packages by following commands:
-
-    ```BASH
-    pyenv local 3.11.3
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-### **`WindowsOS`** type the following commands :
-
-
-- `Step_1:` Update Chocolatey and install Node by following commands:
-    ```sh
-    choco upgrade chocolatey
-    choco install nodejs
-    ```
-
-- `Step_2:` Install the virtual environment and the required packages by following commands.
-
-   For `PowerShell` CLI :
-
-    ```PowerShell
-    pyenv local 3.11.3
-    python -m venv .venv
-    .venv\Scripts\Activate.ps1
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
-
-    For `Git-Bash` CLI :
-  
-    ```BASH
-    pyenv local 3.11.3
-    python -m venv .venv
-    source .venv/Scripts/activate
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
- 
+### Dependencies
+```
+pandas>=1.3.0
+numpy>=1.21.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+jupyter>=1.0.0
+```

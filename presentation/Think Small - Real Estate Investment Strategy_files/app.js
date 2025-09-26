@@ -27,7 +27,7 @@ class Presentation {
     
     // Speaker notes toggle
     document.getElementById('notesToggle').addEventListener('click', () => {
-      this.toggleNotes();
+      this.toggleNotesOff();
     });
     
     // Keyboard navigation
